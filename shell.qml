@@ -42,9 +42,40 @@ PanelWindow {
 
     Separator { separatorColor: root.colMuted }
 
+    // CPU Temperature
+    CpuTempWidget {
+      colFg: root.colFg
+      colCyan: root.colCyan
+      colYellow: root.colYellow
+      fontFamily: root.fontFamily
+      fontSize: root.fontSize
+    }
+
+    Separator { separatorColor: root.colMuted }
+
     // Memory
     MemoryWidget {
       colFg: root.colFg
+      fontSize: root.fontSize
+    }
+
+    Separator { separatorColor: root.colMuted }
+
+    // Network
+    NetworkWidget {
+      colFg: root.colFg
+      colCyan: root.colCyan
+      fontFamily: root.fontFamily
+      fontSize: root.fontSize
+    }
+
+    Separator { separatorColor: root.colMuted }
+
+    // Volume
+    VolumeWidget {
+      colFg: root.colFg
+      colYellow: root.colYellow
+      fontFamily: root.fontFamily
       fontSize: root.fontSize
     }
 

@@ -1,3 +1,4 @@
+import Quickshell.Io
 import QtQuick
 
 Item {
@@ -22,6 +23,19 @@ Item {
       onTriggered: {
         clock.text = Qt.formatDateTime(new Date(), "ddd, MMM dd - hh:mm:ss")
       }
+    }
+  }
+
+  Process {
+    id: openCalendar
+    command: ["sh", "-c", "which gnome-calendar >/dev/null 2>&1 && gnome-calendar || which khal >/dev/null 2>&1 && khal interactive || which cal >/dev/null 2>&1 && (alacritty -e cal || kitty -e cal || xterm -e cal || cal) || echo Calendar not found"]
+  }
+
+  MouseArea {
+    anchors.fill: parent
+    cursorShape: Qt.PointingHandCursor
+    onClicked: {
+      openCalendar.running = true
     }
   }
   
