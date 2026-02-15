@@ -2,29 +2,20 @@ import Quickshell
 import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
+import ".." as Root
 
 PopupWindow {
   id: dropdown
   
-  property color colFg: "#a9b1d6"
-  property color colCyan: "#0db9d7"
-  property color colYellow: "#e0af68"
-  property color colMuted: "#444b6a"
-  property color colBg: "#1a1b26"
-  property string fontFamily: "JetBrainsMono Nerd Font"
-  property int fontSize: 14
-  property int borderWidth: 2
-  property color borderColor: dropdown.colMuted
-  
   visible: false
   color: "transparent"
   
-  implicitWidth: 300
-  implicitHeight: 200
+  implicitWidth: Root.Theme.dropdownWidth
+  implicitHeight: Root.Theme.dropdownHeight
   
   anchor {
     rect.x: panel.width - 30
-    rect.y: panel.height - dropdown.borderWidth
+    rect.y: panel.height - Root.Theme.borderWidth
     rect.width: 0
     rect.height: 0
     
@@ -32,15 +23,16 @@ PopupWindow {
   
   Rectangle {
     anchors.fill: parent
-    color: dropdown.colBg
-    radius: 2
+    color: Root.Theme.background
+    radius: Root.Theme.borderRadius
+    
     // Left border
     Rectangle {
       anchors.left: parent.left
       anchors.top: parent.top
       anchors.bottom: parent.bottom
-      width: dropdown.borderWidth
-      color: dropdown.borderColor
+      width: Root.Theme.borderWidth
+      color: Root.Theme.borderColor
     }
     
     // Right border
@@ -48,8 +40,8 @@ PopupWindow {
       anchors.right: parent.right
       anchors.top: parent.top
       anchors.bottom: parent.bottom
-      width: dropdown.borderWidth
-      color: dropdown.borderColor
+      width: Root.Theme.borderWidth
+      color: Root.Theme.borderColor
     }
     
     // Bottom border
@@ -57,51 +49,74 @@ PopupWindow {
       anchors.bottom: parent.bottom
       anchors.left: parent.left
       anchors.right: parent.right
-      height: dropdown.borderWidth
-      color: dropdown.borderColor
+      height: Root.Theme.borderWidth
+      color: Root.Theme.borderColor
     }
     
     ColumnLayout {
       anchors.fill: parent
-      anchors.margins: 16
-      spacing: 16
+      anchors.margins: Root.Theme.dropdownMargins
+      spacing: Root.Theme.spacingXLarge
       
       // Title
       Text {
         text: "System Statistics"
-        color: dropdown.colCyan
-        font { family: dropdown.fontFamily; pixelSize: dropdown.fontSize + 2; bold: true }
+        color: Root.Theme.cyan
+        font { family: Root.Theme.fontFamily; pixelSize: Root.Theme.fontSizeLarge; bold: true }
         Layout.alignment: Qt.AlignHCenter
       }
       
       Rectangle {
         Layout.fillWidth: true
         height: 1
-        color: dropdown.colMuted
+        color: Root.Theme.muted
       }
       
       // Stats
       ColumnLayout {
-        spacing: 12
+        spacing: Root.Theme.spacingXLarge
         Layout.fillWidth: true
         
-        CpuWidget {
-          colFg: dropdown.colFg
-          fontSize: dropdown.fontSize
+        // CPU and MEM side by side
+        RowLayout {
+          Layout.fillWidth: true
+          spacing: 60
+          
+          RadialBarWidget {
+            id: cpuBar
+            value: cpuData.cpuUsage
+            label: "CPU"
+          }
+          
+          RadialBarWidget {
+            id: memBar
+            value: memData.memUsage
+            label: "MEM"
+          }
         }
         
-        CpuTempWidget {
-          colFg: dropdown.colFg
-          colCyan: dropdown.colCyan
-          colYellow: dropdown.colYellow
-          fontFamily: dropdown.fontFamily
-          fontSize: dropdown.fontSize
+        // TEMP bar below
+        TempBarWidget {
+          id: tempBar
+          value: tempData.cpuTemp
+          maxValue: 100
         }
-        
-        MemoryWidget {
-          colFg: dropdown.colFg
-          fontSize: dropdown.fontSize
-        }
+      }
+      
+      // Hidden widgets to get data
+      CpuWidget {
+        id: cpuData
+        visible: false
+      }
+      
+      MemoryWidget {
+        id: memData
+        visible: false
+      }
+      
+      CpuTempWidget {
+        id: tempData
+        visible: false
       }
       
       Item { Layout.fillHeight: true }

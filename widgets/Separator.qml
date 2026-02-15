@@ -1,11 +1,9 @@
 import QtQuick
+import ".." as Root
 
 Rectangle {
-  property color separatorColor: "#444b6a"
-  property int separatorWidth: 1
-  property int separatorHeight: 16
-  width: separatorWidth
-  height: separatorHeight
-  color: separatorColor
+  width: Root.Theme.separatorWidth
+  height: Root.Theme.separatorHeight
+  color: Root.Theme.muted
 }
 
