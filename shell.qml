@@ -21,8 +21,9 @@ PanelWindow {
   anchors.top: true
   anchors.left: true
   anchors.right: true
-  implicitHeight: 30
+  implicitHeight: 32
   color: root.colBg
+
 
   RowLayout {
     anchors.fill: parent
@@ -34,30 +35,7 @@ PanelWindow {
 
     Item { Layout.fillWidth: true}
 
-    // CPU
-    CpuWidget {
-      colFg: root.colFg
-      fontSize: root.fontSize
-    }
 
-    Separator { separatorColor: root.colMuted }
-
-    // CPU Temperature
-    CpuTempWidget {
-      colFg: root.colFg
-      colCyan: root.colCyan
-      colYellow: root.colYellow
-      fontFamily: root.fontFamily
-      fontSize: root.fontSize
-    }
-
-    Separator { separatorColor: root.colMuted }
-
-    // Memory
-    MemoryWidget {
-      colFg: root.colFg
-      fontSize: root.fontSize
-    }
 
     Separator { separatorColor: root.colMuted }
 
@@ -100,5 +78,15 @@ PanelWindow {
     }
 
     Separator { separatorColor: root.colMuted }
+        // Stats Group (CPU, Temp, Memory)
+    StatsGroup {
+      colFg: root.colFg
+      colCyan: root.colCyan
+      colYellow: root.colYellow
+      colMuted: root.colMuted
+      fontFamily: root.fontFamily
+      fontSize: root.fontSize
+    }
+       Separator { separatorColor: root.colMuted; separatorWidth: 5; separatorHeight: 16 }
   }
 }
