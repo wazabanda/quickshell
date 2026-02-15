@@ -40,9 +40,19 @@ ShellRoot {
       ModeButton {
         id: modeButton
         dropdownWindow: modeDropdown
+        triggerMode: "hover"  // "click" or "hover"
+        hoverDelay: 200  // Delay in ms before showing on hover
         
         onToggleDropdown: {
           modeDropdown.visible = !modeDropdown.visible
+        }
+        
+        onShowDropdown: {
+          modeDropdown.visible = true
+        }
+        
+        onHideDropdown: {
+          modeDropdown.visible = false
         }
         
         ModeDropdown {
@@ -90,9 +100,19 @@ ShellRoot {
       StatsGroup {
         id: statsGroup
         dropdownWindow: statsDropdown
+        triggerMode: "hover"  // "click" or "hover"
+        hoverDelay: 200  // Delay in ms before showing on hover
         
         onToggleDropdown: {
           statsDropdown.visible = !statsDropdown.visible
+        }
+        
+        onShowDropdown: {
+          statsDropdown.visible = true
+        }
+        
+        onHideDropdown: {
+          statsDropdown.visible = false
         }
         
         // Stats dropdown window (child of StatsGroup)

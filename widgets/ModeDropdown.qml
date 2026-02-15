@@ -48,7 +48,7 @@ DropdownMenu {
           spacing: Root.Theme.spacingMedium
           
           Text {
-            text: "󰖳"
+            text: "" // Font Awesome/FiraCode "linux" or use "󰆍" for a generic code icon
             color: currentMode === "work" ? Root.Theme.background : Root.Theme.cyan
             font { family: Root.Theme.fontFamily; pixelSize: Root.Theme.fontSizeLarge; bold: true }
           }

@@ -4,22 +4,28 @@ import QtQuick
 QtObject {
   id: theme
   
-  // Color Palette - Tokyo Night
-  readonly property color background: "#1a1b26"
-  readonly property color foreground: "#a9b1d6"
-  readonly property color muted: "#444b6a"
-  readonly property color cyan: "#0db9d7"
-  readonly property color blue: "#7aa2f7"
-  readonly property color yellow: "#e0af68"
-  readonly property color red: "#f7768e"
-  readonly property color green: "#9ece6a"
-  readonly property color orange: "#ff9e64"
-  readonly property color purple: "#bb9af7"
+  // Color Palette - Catppuccin Mocha
+  readonly property color background: "#1e1e2e"    // Base
+  readonly property color foreground: "#cdd6f4"    // Text
+  readonly property color muted: "#45475a"         // Surface1
+  readonly property color cyan: "#89dceb"          // Sky
+  readonly property color blue: "#89b4fa"          // Blue
+  readonly property color yellow: "#f9e2af"        // Yellow
+  readonly property color red: "#f38ba8"           // Red
+  readonly property color green: "#a6e3a1"         // Green
+  readonly property color orange: "#fab387"        // Peach
+  readonly property color purple: "#cba6f7"        // Mauve
+  readonly property color pink: "#f5c2e7"          // Pink
+  readonly property color teal: "#94e2d5"          // Teal
+  readonly property color lavender: "#b4befe"      // Lavender
+  readonly property color surface0: "#313244"      // Surface0
+  readonly property color surface1: "#45475a"      // Surface1
+  readonly property color surface2: "#585b70"      // Surface2
   
   // Border Properties
   readonly property int borderWidth: 2
-  readonly property color borderColor: muted
-  readonly property int borderRadius: 2
+  readonly property color borderColor: surface1
+  readonly property int borderRadius: 8
   readonly property int panelBorderRadius: 0
   
   // Typography

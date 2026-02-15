@@ -22,6 +22,9 @@ PopupWindow {
   
   property alias content: contentContainer.children
   
+  // Hover tracking for hover mode
+  property bool isHovered: false
+  
   visible: false
   color: "transparent"
   
@@ -62,6 +65,25 @@ PopupWindow {
     anchors.fill: parent
     color: Root.Theme.background
     radius: Root.Theme.borderRadius
+    
+    // Track hover state for hover mode
+    MouseArea {
+      anchors.fill: parent
+      hoverEnabled: true
+      propagateComposedEvents: true
+      
+      onEntered: {
+        dropdown.isHovered = true
+      }
+      
+      onExited: {
+        dropdown.isHovered = false
+      }
+      
+      onClicked: mouse.accepted = false
+      onPressed: mouse.accepted = false
+      onReleased: mouse.accepted = false
+    }
     
     // Left border
     Rectangle {

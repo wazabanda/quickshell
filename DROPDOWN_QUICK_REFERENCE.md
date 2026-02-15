@@ -333,16 +333,23 @@ DropdownMenu {
 ## Theme Properties
 
 ```qml
-// Colors
-Root.Theme.background      // #1a1b26
-Root.Theme.foreground      // #a9b1d6
-Root.Theme.cyan           // #0db9d7
-Root.Theme.blue           // #7aa2f7
-Root.Theme.green          // #9ece6a
-Root.Theme.yellow         // #e0af68
-Root.Theme.red            // #f7768e
-Root.Theme.orange         // #ff9e64
-Root.Theme.muted          // #444b6a
+// Colors (Catppuccin Mocha)
+Root.Theme.background      // #1e1e2e
+Root.Theme.foreground      // #cdd6f4
+Root.Theme.cyan           // #89dceb
+Root.Theme.blue           // #89b4fa
+Root.Theme.green          // #a6e3a1
+Root.Theme.yellow         // #f9e2af
+Root.Theme.red            // #f38ba8
+Root.Theme.orange         // #fab387
+Root.Theme.purple         // #cba6f7
+Root.Theme.pink           // #f5c2e7
+Root.Theme.teal           // #94e2d5
+Root.Theme.lavender       // #b4befe
+Root.Theme.muted          // #45475a
+Root.Theme.surface0       // #313244
+Root.Theme.surface1       // #45475a
+Root.Theme.surface2       // #585b70
 
 // Borders
 Root.Theme.borderWidth    // 2

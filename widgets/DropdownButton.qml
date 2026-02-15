@@ -9,8 +9,12 @@ Item {
   property string icon: "󰅂"
   property string iconOpen: "󰅀"
   property var dropdownWindow: null
+  property string triggerMode: "click"  // "click" or "hover"
+  property int hoverDelay: 200  // Delay in ms before showing on hover
   
   signal toggleDropdown()
+  signal showDropdown()
+  signal hideDropdown()
   
   implicitWidth: buttonLayout.implicitWidth
   implicitHeight: buttonLayout.implicitHeight
@@ -52,14 +56,60 @@ Item {
       font { family: Root.Theme.fontFamily; pixelSize: Root.Theme.fontSize }
     }
 
-    // Make whole row clickable
+    // Make whole row clickable/hoverable
     MouseArea {
+      id: mouseArea
       anchors.fill: parent
       cursorShape: Qt.PointingHandCursor
-      onClicked: {
-        root.toggleDropdown()
-      }
       hoverEnabled: true
+      
+      onClicked: {
+        if (root.triggerMode === "click") {
+          root.toggleDropdown()
+        }
+      }
+      
+      onEntered: {
+        if (root.triggerMode === "hover") {
+          checkAndHide.stop()
+          hoverTimer.start()
+        }
+      }
+      
+      onExited: {
+        if (root.triggerMode === "hover") {
+          hoverTimer.stop()
+          // Start checking if we should hide
+          checkAndHide.start()
+        }
+      }
+    }
+    
+    // Timer for hover delay
+    Timer {
+      id: hoverTimer
+      interval: root.hoverDelay
+      onTriggered: {
+        root.showDropdown()
+      }
+    }
+    
+    // Timer for checking if we should hide
+    Timer {
+      id: checkAndHide
+      interval: 100
+      repeat: true
+      onTriggered: {
+        if (root.dropdownWindow && root.dropdownWindow.visible) {
+          // Check if mouse is in button or dropdown
+          if (!mouseArea.containsMouse && !root.dropdownWindow.isHovered) {
+            stop()
+            root.hideDropdown()
+          }
+        } else {
+          stop()
+        }
+      }
     }
   }
 }
