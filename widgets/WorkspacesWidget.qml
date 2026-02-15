@@ -1,11 +1,10 @@
 import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
+import ".." as Root
 
 RowLayout {
-  spacing: 8
-  // anchors.fill: parent
-  // anchors.margins: 8
+  spacing: Root.Theme.spacingMedium
 
   Repeater {
     model: 10
@@ -13,8 +12,8 @@ RowLayout {
       property var ws: Hyprland.workspaces.values.find(w => w.id === index + 1)
       property bool isActive: Hyprland.focusedWorkspace?.id === (index + 1)
       text: index + 1
-      color: isActive ? "#0db9d7" : (ws ?  "#7aa2f7": "#444b6a")
-      font { pixelSize: 14; bold: true}
+      color: isActive ? Root.Theme.cyan : (ws ? Root.Theme.blue : Root.Theme.muted)
+      font { pixelSize: Root.Theme.fontSize; bold: true}
 
       MouseArea {
         anchors.fill: parent

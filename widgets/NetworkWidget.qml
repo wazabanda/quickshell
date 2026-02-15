@@ -1,15 +1,12 @@
 import Quickshell.Io
 import QtQuick
+import ".." as Root
 
 Item {
   id: root
   
   property string networkStatus: "Disconnected"
   property string networkIcon: "󰤭"
-  property color colFg: "#a9b1d6"
-  property color colCyan: "#0db9d7"
-  property string fontFamily: "JetBrainsMono Nerd Font"
-  property int fontSize: 14
 
   Process {
     id: networkProc
@@ -44,8 +41,8 @@ Item {
     anchors.left: parent.left
     anchors.verticalCenter: parent.verticalCenter
     text: root.networkIcon + " " + root.networkStatus
-    color: root.networkStatus === "Connected" ? root.colCyan : root.colFg
-    font { family: root.fontFamily; pixelSize: root.fontSize }
+    color: root.networkStatus === "Connected" ? Root.Theme.cyan : Root.Theme.foreground
+    font { family: Root.Theme.fontFamily; pixelSize: Root.Theme.fontSize }
   }
 
   Process {

@@ -1,5 +1,6 @@
 import Quickshell.Io
 import QtQuick
+import ".." as Root
 
 Item {
   id: root
@@ -7,8 +8,6 @@ Item {
   property int cpuUsage: 0
   property var lastCpuIdle: 0
   property var lastCpuTotal: 0
-  property color colFg: "#a9b1d6"
-  property int fontSize: 14
 
   Process {
     id: cpuProc
@@ -44,8 +43,8 @@ Item {
     anchors.left: parent.left
     anchors.verticalCenter: parent.verticalCenter
     text: "CPU: " + root.cpuUsage + "%"
-    color: root.colFg
-    font { pixelSize: root.fontSize }
+    color: Root.Theme.foreground
+    font { pixelSize: Root.Theme.fontSize }
   }
   
   implicitWidth: cpuText.implicitWidth

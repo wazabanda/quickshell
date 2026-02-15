@@ -1,5 +1,6 @@
 import Quickshell.Io
 import QtQuick
+import ".." as Root
 
 Item {
   id: root
@@ -7,10 +8,6 @@ Item {
   property int volumePercent: 0
   property bool isMuted: false
   property string volumeIcon: "󰕾"
-  property color colFg: "#a9b1d6"
-  property color colYellow: "#e0af68"
-  property string fontFamily: "JetBrainsMono Nerd Font"
-  property int fontSize: 14
 
   Process {
     id: volumeProc
@@ -68,8 +65,8 @@ Item {
     anchors.left: parent.left
     anchors.verticalCenter: parent.verticalCenter
     text: root.volumeIcon + " " + root.volumePercent + "%"
-    color: root.isMuted ? root.colYellow : root.colFg
-    font { family: root.fontFamily; pixelSize: root.fontSize }
+    color: root.isMuted ? Root.Theme.yellow : Root.Theme.foreground
+    font { family: Root.Theme.fontFamily; pixelSize: Root.Theme.fontSize }
   }
 
   Process {

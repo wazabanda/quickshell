@@ -1,5 +1,6 @@
 import Quickshell.Io
 import QtQuick
+import ".." as Root
 
 Item {
   id: root
@@ -7,11 +8,6 @@ Item {
   property int batteryPercent: 0
   property string batteryStatus: "Unknown"
   property bool isCharging: false
-  property color colFg: "#a9b1d6"
-  property color colCyan: "#0db9d7"
-  property color colYellow: "#e0af68"
-  property string fontFamily: "JetBrainsMono Nerd Font"
-  property int fontSize: 14
 
   Process {
     id: batteryProc
@@ -73,8 +69,8 @@ Item {
     anchors.left: parent.left
     anchors.verticalCenter: parent.verticalCenter
     text: getBatteryIcon(root.batteryPercent, root.isCharging) + " " + root.batteryPercent + "%"
-    color: root.batteryPercent < 20 ? root.colYellow : (root.isCharging ? root.colCyan : root.colFg)
-    font { family: root.fontFamily; pixelSize: root.fontSize }
+    color: root.batteryPercent < 20 ? Root.Theme.yellow : (root.isCharging ? Root.Theme.cyan : Root.Theme.foreground)
+    font { family: Root.Theme.fontFamily; pixelSize: Root.Theme.fontSize }
   }
   
   implicitWidth: batteryText.implicitWidth

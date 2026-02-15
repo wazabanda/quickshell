@@ -1,12 +1,11 @@
 import Quickshell.Io
 import QtQuick
+import ".." as Root
 
 Item {
   id: root
   
   property int memUsage: 0
-  property color colFg: "#a9b1d6"
-  property int fontSize: 14
 
   Process {
     id: memProc
@@ -38,8 +37,8 @@ Item {
     anchors.left: parent.left
     anchors.verticalCenter: parent.verticalCenter
     text: "Memory: " + root.memUsage + "%"
-    color: root.colFg
-    font { pixelSize: root.fontSize }
+    color: Root.Theme.foreground
+    font { pixelSize: Root.Theme.fontSize }
   }
   
   implicitWidth: memText.implicitWidth

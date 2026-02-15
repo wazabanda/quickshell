@@ -35,6 +35,36 @@ ShellRoot {
       Item { Layout.fillWidth: true}
 
       Separator {}
+      
+      // Mode selector (Work/Game)
+      ModeButton {
+        id: modeButton
+        dropdownWindow: modeDropdown
+        
+        onToggleDropdown: {
+          modeDropdown.visible = !modeDropdown.visible
+        }
+        
+        ModeDropdown {
+          id: modeDropdown
+          anchor.window: panel
+          
+          // Button-relative positioning (new method)
+          buttonItem: modeButton
+          alignment: "right"  // "left", "center", or "right"
+          alignmentOffset: 0  // Additional offset in pixels
+          
+          // Dimensions
+          dropdownWidth: 280
+          dropdownHeight: 350
+          
+          // Manual positioning (legacy, comment out when using buttonItem)
+          // offsetX: panel.width - 750
+          // offsetY: panel.height - Theme.borderWidth
+        }
+      }
+
+      Separator {}
 
       // Network
       NetworkWidget {}
@@ -69,6 +99,19 @@ ShellRoot {
         StatsDropdown {
           id: statsDropdown
           anchor.window: panel
+          
+          // Button-relative positioning (new method)
+          buttonItem: statsGroup
+          alignment: "right"  // "left", "center", or "right"
+          alignmentOffset: 0  // Additional offset in pixels
+          
+          // Dimensions
+          dropdownWidth: 280
+          dropdownHeight: 300
+          
+          // Manual positioning (legacy, comment out when using buttonItem)
+          // offsetX: panel.width - 30
+          // offsetY: panel.height - Theme.borderWidth
         }
       }
       

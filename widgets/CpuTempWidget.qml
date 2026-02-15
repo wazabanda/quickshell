@@ -1,15 +1,11 @@
 import Quickshell.Io
 import QtQuick
+import ".." as Root
 
 Item {
   id: root
   
   property int cpuTemp: 0
-  property color colFg: "#a9b1d6"
-  property color colYellow: "#e0af68"
-  property color colCyan: "#0db9d7"
-  property string fontFamily: "JetBrainsMono Nerd Font"
-  property int fontSize: 14
 
   Process {
     id: tempProc
@@ -35,9 +31,9 @@ Item {
   }
 
   function getTempColor() {
-    if (cpuTemp >= 80) return root.colYellow
-    if (cpuTemp >= 60) return root.colCyan
-    return root.colFg
+    if (cpuTemp >= 80) return Root.Theme.yellow
+    if (cpuTemp >= 60) return Root.Theme.cyan
+    return Root.Theme.foreground
   }
 
   Text {
@@ -46,7 +42,7 @@ Item {
     anchors.verticalCenter: parent.verticalCenter
     text: "󰏈 " + root.cpuTemp + "°C"
     color: getTempColor()
-    font { family: root.fontFamily; pixelSize: root.fontSize }
+    font { family: Root.Theme.fontFamily; pixelSize: Root.Theme.fontSize }
   }
   
   implicitWidth: tempText.implicitWidth
