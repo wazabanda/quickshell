@@ -13,6 +13,8 @@ PopupWindow {
   property color colBg: "#1a1b26"
   property string fontFamily: "JetBrainsMono Nerd Font"
   property int fontSize: 14
+  property int borderWidth: 2
+  property color borderColor: dropdown.colMuted
   
   visible: false
   color: "transparent"
@@ -22,7 +24,7 @@ PopupWindow {
   
   anchor {
     rect.x: panel.width - 30
-    rect.y: panel.height
+    rect.y: panel.height - dropdown.borderWidth
     rect.width: 0
     rect.height: 0
     
@@ -30,11 +32,34 @@ PopupWindow {
   
   Rectangle {
     anchors.fill: parent
-    anchors.left: parent.left
     color: dropdown.colBg
-    // border.color: dropdown.colMuted
-    // border.width: 2
-    // radius: 8
+    radius: 2
+    // Left border
+    Rectangle {
+      anchors.left: parent.left
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      width: dropdown.borderWidth
+      color: dropdown.borderColor
+    }
+    
+    // Right border
+    Rectangle {
+      anchors.right: parent.right
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      width: dropdown.borderWidth
+      color: dropdown.borderColor
+    }
+    
+    // Bottom border
+    Rectangle {
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: dropdown.borderWidth
+      color: dropdown.borderColor
+    }
     
     ColumnLayout {
       anchors.fill: parent

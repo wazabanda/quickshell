@@ -18,6 +18,8 @@ ShellRoot {
     property color colYellow: "#e0af68"
     property string fontFamily: "JetBrainsMono Nerd Font"
     property int fontSize: 14
+    property int borderWidth: 2
+    property color borderColor: panel.colMuted
 
     anchors.top: true
     anchors.left: true
@@ -25,6 +27,14 @@ ShellRoot {
     implicitHeight: 32
     color: panel.colBg
 
+    // Bottom border
+    Rectangle {
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: panel.borderWidth
+      color: panel.borderColor
+    }
 
     RowLayout {
       anchors.fill: parent
@@ -105,6 +115,8 @@ ShellRoot {
           colBg: panel.colBg
           fontFamily: panel.fontFamily
           fontSize: panel.fontSize
+          borderWidth: panel.borderWidth
+          borderColor: panel.borderColor
         }
       }
       
