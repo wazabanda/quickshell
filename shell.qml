@@ -176,8 +176,39 @@ ShellRoot {
 
         Separator {}
       
-        // Clock 
-        ClockWidget {}
+         // Clock with calendar dropdown
+        ClockWidget {
+          id: clockWidget
+          dropdownWindow: calendarDropdown
+          triggerMode: "hover"  // "click" or "hover"
+          hoverDelay: 200  // Delay in ms before showing on hover
+          
+          onToggleDropdown: {
+            calendarDropdown.visible = !calendarDropdown.visible
+          }
+          
+          onShowDropdown: {
+            calendarDropdown.visible = true
+          }
+          
+          onHideDropdown: {
+            calendarDropdown.visible = false
+          }
+          
+          CalendarDropdown {
+            id: calendarDropdown
+            anchor.window: panel
+            
+            // Button-relative positioning
+            buttonItem: clockWidget
+            alignment: "center"  // "left", "center", or "right"
+            alignmentOffset: 0  // Additional offset in pixels
+            
+            // Dimensions
+            dropdownWidth: 350
+            dropdownHeight: 380
+          }
+        }
 
         Separator {}
         
