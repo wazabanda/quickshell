@@ -63,7 +63,7 @@ PopupWindow {
   
   Rectangle {
     anchors.fill: parent
-    color: Root.Theme.background
+    color: Qt.rgba(Root.Theme.background.r, Root.Theme.background.g, Root.Theme.background.b, Root.Theme.dropdownOpacity)
     radius: Root.Theme.borderRadius
     
     // Track hover state for hover mode

@@ -51,7 +51,7 @@ Item {
 
   Timer {
     id: procTimer
-    interval: 2000
+    interval: 500
     running: true
     repeat: true
     onTriggered: {

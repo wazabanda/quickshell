@@ -119,7 +119,7 @@ DropdownMenu {
   // Work mode commands
   Process {
     id: workModeProcess
-    command: ["sh", "-c", "echo 'Switching to Work Mode' && notify-send 'Mode Switch' 'Switched to Work Mode'"]
+    command: ["sh", "-c", "echo 'Switching to Work Mode' && notify-send 'Mode Switch' 'Switched to Work Mode (WAZA remember to implement the work commands)'"]
   }
   
   // Game mode commands

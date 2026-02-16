@@ -26,7 +26,7 @@ QtObject {
   readonly property int borderWidth: 2
   readonly property color borderColor: surface1
   readonly property int borderRadius: 8
-  readonly property int panelBorderRadius: 0
+  readonly property int panelBorderRadius: 8
   
   // Typography
   readonly property string fontFamily: "JetBrainsMono Nerd Font"
@@ -41,7 +41,7 @@ QtObject {
   readonly property int spacingXLarge: 16
   
   // Panel Properties
-  readonly property int panelHeight: 32
+  readonly property int panelHeight: 42
   readonly property int panelMargins: 8
   
   // Widget Properties
@@ -56,7 +56,7 @@ QtObject {
   // Radial Bar Properties
   readonly property int radialBarSize: 80
   readonly property int radialBarStrokeWidth: 6
-  readonly property real radialBarBorderGap: 0.03
+  readonly property real radialBarBorderGap: 0.25
   
   // Temperature Bar Properties
   readonly property int tempBarHeight: 8
@@ -71,5 +71,7 @@ QtObject {
   readonly property real opacityDisabled: 0.2
   readonly property real opacityHover: 0.8
   readonly property real opacityPressed: 0.6
+  readonly property real panelOpacity: 0.8
+  readonly property real dropdownOpacity: 0.8
 }
 
