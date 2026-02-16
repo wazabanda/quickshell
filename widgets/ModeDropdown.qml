@@ -119,13 +119,42 @@ DropdownMenu {
   // Work mode commands
   Process {
     id: workModeProcess
-    command: ["sh", "-c", "echo 'Switching to Work Mode' && notify-send 'Mode Switch' 'Switched to Work Mode (WAZA remember to implement the work commands)'"]
+    command: ["sh", "-c", `
+      # Start Docker service
+      sudo systemctl start docker && \
+      
+      # Open Docker Desktop in workspace 10
+      hyprctl dispatch workspace 10 && \
+      docker-desktop & \
+      sleep 0.5 && \
+      
+      # Open Spotify in workspace 9
+      hyprctl dispatch workspace 9 && \
+      spotify & \
+      sleep 0.5 && \
+      
+      # Return to current workspace and open Cursor
+      hyprctl dispatch workspace previous && \
+      cursor & \
+      
+      # Send notification
+      notify-send 'Mode Switch' 'Switched to Work Mode'
+    `]
   }
   
   // Game mode commands
   Process {
     id: gameModeProcess
-    command: ["sh", "-c", "echo 'Switching to Game Mode' && notify-send 'Mode Switch' 'Switched to Game Mode'"]
+    command: ["sh", "-c", `
+      # Pause Docker Desktop
+      docker pause $(docker ps -q) 2>/dev/null || true && \
+      
+      # Open Lutris
+      lutris & \
+      
+      # Send notification
+      notify-send 'Mode Switch' 'Switched to Game Mode'
+    `]
   }
 }
 

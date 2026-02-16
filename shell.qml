@@ -27,9 +27,10 @@ ShellRoot {
         anchors.fill: parent
         anchors.margins: Theme.borderWidth
         color: Qt.rgba(Theme.background.r, Theme.background.g, Theme.background.b, Theme.panelOpacity)
-        radius: Theme.panelBorderRadius
-        border.width: Theme.borderWidth
-        border.color: Theme.borderColor
+        
+        // radius: Theme.panelBorderRadius
+        // border.width: Theme.borderWidth
+        // border.color: Theme.borderColor
         // // Top border
         // Rectangle {
         //   anchors.top: parent.top

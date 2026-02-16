@@ -41,7 +41,7 @@ QtObject {
   readonly property int spacingXLarge: 16
   
   // Panel Properties
-  readonly property int panelHeight: 42
+  readonly property int panelHeight: 46
   readonly property int panelMargins: 8
   
   // Widget Properties
