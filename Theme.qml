@@ -23,10 +23,10 @@ QtObject {
   readonly property color surface2: "#585b70"      // Surface2
   
   // Border Properties
-  readonly property int borderWidth: 2
+  readonly property int borderWidth: 0
   readonly property color borderColor: surface1
-  readonly property int borderRadius: 8
-  readonly property int panelBorderRadius: 8
+  readonly property int borderRadius: 0
+  readonly property int panelBorderRadius: 0
   
   // Typography
   readonly property string fontFamily: "JetBrainsMono Nerd Font"
