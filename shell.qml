@@ -205,8 +205,8 @@ ShellRoot {
             alignmentOffset: 0  // Additional offset in pixels
             
             // Dimensions
-            dropdownWidth: 350
-            dropdownHeight: 380
+            dropdownWidth: 400
+            dropdownHeight: 600
           }
         }
 
