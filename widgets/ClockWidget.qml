@@ -36,7 +36,7 @@ Item {
     id: clock
     anchors.left: parent.left
     anchors.verticalCenter: parent.verticalCenter
-    color: Root.Theme.blue
+    color: Root.Theme.widgetClockText
     font {family: Root.Theme.fontFamily; pixelSize: Root.Theme.fontSize; bold: true}
     text: Qt.formatDateTime(new Date(), "ddd, MMM dd - hh:mm:ss")
 

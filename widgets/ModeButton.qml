@@ -7,5 +7,6 @@ DropdownButton {
   label: "Mode"
   icon: "󰐾"
   iconOpen: "󰐽"
+  widgetTextColor: Root.Theme.widgetModeText
 }
 

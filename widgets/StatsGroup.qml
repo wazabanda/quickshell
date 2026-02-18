@@ -7,4 +7,5 @@ DropdownButton {
   label: "Stats"
   icon: "󰅂"
   iconOpen: "󰅀"
+  widgetTextColor: Root.Theme.widgetStatsText
 }

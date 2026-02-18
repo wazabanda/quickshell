@@ -41,7 +41,7 @@ Item {
     anchors.left: parent.left
     anchors.verticalCenter: parent.verticalCenter
     text: root.networkIcon + " " + root.networkStatus
-    color: root.networkStatus === "Connected" ? Root.Theme.cyan : Root.Theme.foreground
+    color: Root.Theme.widgetNetworkText
     font { family: Root.Theme.fontFamily; pixelSize: Root.Theme.fontSize }
   }
 

@@ -71,7 +71,28 @@ QtObject {
   readonly property real opacityDisabled: 0.2
   readonly property real opacityHover: 0.8
   readonly property real opacityPressed: 0.6
-  readonly property real panelOpacity: 0.8
+  readonly property real panelOpacity: 0.7
   readonly property real dropdownOpacity: 0.8
+  readonly property real widgetBackgroundOpacity: 1
+  
+  // Widget Background Colors
+  readonly property color widgetWorkspacesBackground: "#000000"  // No background for workspaces
+  readonly property color widgetModeBackground: orange
+  readonly property color widgetSpotifyBackground: green
+  readonly property color widgetNetworkBackground: cyan
+  readonly property color widgetVolumeBackground: blue
+  readonly property color widgetBatteryBackground: yellow
+  readonly property color widgetClockBackground: pink
+  readonly property color widgetStatsBackground: teal
+  
+  // Widget Text Colors
+  readonly property color widgetWorkspacesText: foreground  // Keep original for workspaces
+  readonly property color widgetModeText: '#2e2e2e'
+  readonly property color widgetSpotifyText: '#2e2e2e'
+  readonly property color widgetNetworkText: '#2e2e2e'
+  readonly property color widgetVolumeText: '#2e2e2e'
+  readonly property color widgetBatteryText: '#2e2e2e'
+  readonly property color widgetClockText: '#2e2e2e'
+  readonly property color widgetStatsText: '#2e2e2e'
 }
 

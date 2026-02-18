@@ -69,7 +69,7 @@ Item {
     anchors.left: parent.left
     anchors.verticalCenter: parent.verticalCenter
     text: getBatteryIcon(root.batteryPercent, root.isCharging) + " " + root.batteryPercent + "%"
-    color: root.batteryPercent < 20 ? Root.Theme.yellow : (root.isCharging ? Root.Theme.cyan : Root.Theme.foreground)
+    color: Root.Theme.widgetBatteryText
     font { family: Root.Theme.fontFamily; pixelSize: Root.Theme.fontSize }
   }
   

@@ -65,7 +65,7 @@ Item {
     anchors.left: parent.left
     anchors.verticalCenter: parent.verticalCenter
     text: root.volumeIcon + " " + root.volumePercent + "%"
-    color: root.isMuted ? Root.Theme.yellow : Root.Theme.foreground
+    color: Root.Theme.widgetVolumeText
     font { family: Root.Theme.fontFamily; pixelSize: Root.Theme.fontSize }
   }
 

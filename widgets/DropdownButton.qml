@@ -11,6 +11,7 @@ Item {
   property var dropdownWindow: null
   property string triggerMode: "click"  // "click" or "hover"
   property int hoverDelay: 200  // Delay in ms before showing on hover
+  property color widgetTextColor: Root.Theme.foreground
   
   signal toggleDropdown()
   signal showDropdown()
@@ -44,7 +45,7 @@ Item {
     Text {
       id: toggleButton
       text: (root.dropdownWindow && root.dropdownWindow.visible) ? root.iconOpen : root.icon
-      color: Root.Theme.cyan
+      color: root.widgetTextColor || Root.Theme.foreground
       font { family: Root.Theme.fontFamily; pixelSize: Root.Theme.fontSize; bold: true }
     }
 
@@ -52,7 +53,7 @@ Item {
     Text {
       id: buttonLabel
       text: root.label
-      color: Root.Theme.foreground
+      color: root.widgetTextColor || Root.Theme.foreground
       font { family: Root.Theme.fontFamily; pixelSize: Root.Theme.fontSize }
     }
 

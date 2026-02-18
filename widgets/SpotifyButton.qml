@@ -9,6 +9,7 @@ DropdownButton {
   label: trackName || "No Track"
   icon: "󰓇"  // Spotify icon
   iconOpen: "󰓇"
+  widgetTextColor: Root.Theme.widgetSpotifyText
   
   // Track information
   property string trackName: "Spotify"

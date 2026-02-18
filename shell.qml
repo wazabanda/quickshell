@@ -82,172 +82,255 @@ ShellRoot {
         Separator {}
         
         // Mode selector (Work/Game)
-        ModeButton {
-          id: modeButton
-          dropdownWindow: modeDropdown
-          triggerMode: "hover"  // "click" or "hover"
-          hoverDelay: 200  // Delay in ms before showing on hover
+        Rectangle {
+          color: Qt.rgba(Theme.widgetModeBackground.r, Theme.widgetModeBackground.g, Theme.widgetModeBackground.b, Theme.widgetBackgroundOpacity)
+          radius: 4
+          Layout.preferredHeight: parent.height
+          Layout.preferredWidth: modeButton.implicitWidth + Theme.spacingMedium * 2
           
-          onToggleDropdown: {
-            modeDropdown.visible = !modeDropdown.visible
-          }
-          
-          onShowDropdown: {
-            modeDropdown.visible = true
-          }
-          
-          onHideDropdown: {
-            modeDropdown.visible = false
-          }
-          
-          ModeDropdown {
-            id: modeDropdown
-            anchor.window: panel
+          ModeButton {
+            id: modeButton
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.leftMargin: Theme.spacingMedium
+            anchors.rightMargin: Theme.spacingMedium
+            dropdownWindow: modeDropdown
+            triggerMode: "hover"  // "click" or "hover"
+            hoverDelay: 200  // Delay in ms before showing on hover
             
-            // Button-relative positioning (new method)
-            buttonItem: modeButton
-            alignment: "right"  // "left", "center", or "right"
-            alignmentOffset: 0  // Additional offset in pixels
+            onToggleDropdown: {
+              modeDropdown.visible = !modeDropdown.visible
+            }
             
-            // Dimensions
-            dropdownWidth: 280
-            dropdownHeight: 350
+            onShowDropdown: {
+              modeDropdown.visible = true
+            }
             
-            // Manual positioning (legacy, comment out when using buttonItem)
-            // offsetX: panel.width - 750
-            // offsetY: panel.height - Theme.borderWidth
+            onHideDropdown: {
+              modeDropdown.visible = false
+            }
+            
+            ModeDropdown {
+              id: modeDropdown
+              anchor.window: panel
+              
+              // Button-relative positioning (new method)
+              buttonItem: modeButton
+              alignment: "right"  // "left", "center", or "right"
+              alignmentOffset: 0  // Additional offset in pixels
+              
+              // Dimensions
+              dropdownWidth: 280
+              dropdownHeight: 350
+              
+              // Manual positioning (legacy, comment out when using buttonItem)
+              // offsetX: panel.width - 750
+              // offsetY: panel.height - Theme.borderWidth
+            }
           }
         }
 
         Separator {}
 
         // Spotify Player
-        SpotifyButton {
-          id: spotifyButton
-          dropdownWindow: spotifyDropdown
-          triggerMode: "click"  // "click" or "hover"
-          hoverDelay: 200  // Delay in ms before showing on hover
+        Rectangle {
+          color: Qt.rgba(Theme.widgetSpotifyBackground.r, Theme.widgetSpotifyBackground.g, Theme.widgetSpotifyBackground.b, Theme.widgetBackgroundOpacity)
+          radius: 4
+          Layout.preferredHeight: parent.height
+          Layout.preferredWidth: spotifyButton.implicitWidth + Theme.spacingMedium * 2
           
-          onToggleDropdown: {
-            spotifyDropdown.visible = !spotifyDropdown.visible
-          }
-          
-          onShowDropdown: {
-            spotifyDropdown.visible = true
-          }
-          
-          onHideDropdown: {
-            spotifyDropdown.visible = false
-          }
-          
-          SpotifyDropdown {
-            id: spotifyDropdown
-            anchor.window: panel
+          SpotifyButton {
+            id: spotifyButton
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.leftMargin: Theme.spacingMedium
+            anchors.rightMargin: Theme.spacingMedium
+            dropdownWindow: spotifyDropdown
+            triggerMode: "click"  // "click" or "hover"
+            hoverDelay: 200  // Delay in ms before showing on hover
             
-            // Button-relative positioning (new method)
-            buttonItem: spotifyButton
-            alignment: "center"  // "left", "center", or "right"
-            alignmentOffset: 0  // Additional offset in pixels
+            onToggleDropdown: {
+              spotifyDropdown.visible = !spotifyDropdown.visible
+            }
             
-            // Dimensions
-            dropdownWidth: 350
-            dropdownHeight: 400
+            onShowDropdown: {
+              spotifyDropdown.visible = true
+            }
             
-            // Manual positioning (legacy, comment out when using buttonItem)
-            // offsetX: panel.width - 600
-            // offsetY: panel.height - Theme.borderWidth
+            onHideDropdown: {
+              spotifyDropdown.visible = false
+            }
+            
+            SpotifyDropdown {
+              id: spotifyDropdown
+              anchor.window: panel
+              
+              // Button-relative positioning (new method)
+              buttonItem: spotifyButton
+              alignment: "center"  // "left", "center", or "right"
+              alignmentOffset: 0  // Additional offset in pixels
+              
+              // Dimensions
+              dropdownWidth: 350
+              dropdownHeight: 400
+              
+              // Manual positioning (legacy, comment out when using buttonItem)
+              // offsetX: panel.width - 600
+              // offsetY: panel.height - Theme.borderWidth
+            }
           }
         }
 
         Separator {}
 
         // Network
-        NetworkWidget {}
+        Rectangle {
+          color: Qt.rgba(Theme.widgetNetworkBackground.r, Theme.widgetNetworkBackground.g, Theme.widgetNetworkBackground.b, Theme.widgetBackgroundOpacity)
+          radius: 4
+          Layout.preferredHeight: parent.height
+          Layout.preferredWidth: networkWidget.implicitWidth + Theme.spacingMedium * 2
+          
+          NetworkWidget {
+            id: networkWidget
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.leftMargin: Theme.spacingMedium
+            anchors.rightMargin: Theme.spacingMedium
+          }
+        }
 
         Separator {}
 
         // Volume
-        VolumeWidget {}
+        Rectangle {
+          color: Qt.rgba(Theme.widgetVolumeBackground.r, Theme.widgetVolumeBackground.g, Theme.widgetVolumeBackground.b, Theme.widgetBackgroundOpacity)
+          radius: 4
+          Layout.preferredHeight: parent.height
+          Layout.preferredWidth: volumeWidget.implicitWidth + Theme.spacingMedium * 2
+          
+          VolumeWidget {
+            id: volumeWidget
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.leftMargin: Theme.spacingMedium
+            anchors.rightMargin: Theme.spacingMedium
+          }
+        }
 
         Separator {}
       
         // Battery
-        BatteryWidget {}
+        Rectangle {
+          color: Qt.rgba(Theme.widgetBatteryBackground.r, Theme.widgetBatteryBackground.g, Theme.widgetBatteryBackground.b, Theme.widgetBackgroundOpacity)
+          radius: 4
+          Layout.preferredHeight: parent.height
+          Layout.preferredWidth: batteryWidget.implicitWidth + Theme.spacingMedium * 2
+          
+          BatteryWidget {
+            id: batteryWidget
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.leftMargin: Theme.spacingMedium
+            anchors.rightMargin: Theme.spacingMedium
+          }
+        }
 
         Separator {}
       
          // Clock with calendar dropdown
-        ClockWidget {
-          id: clockWidget
-          dropdownWindow: calendarDropdown
-          triggerMode: "hover"  // "click" or "hover"
-          hoverDelay: 200  // Delay in ms before showing on hover
+        Rectangle {
+          color: Qt.rgba(Theme.widgetClockBackground.r, Theme.widgetClockBackground.g, Theme.widgetClockBackground.b, Theme.widgetBackgroundOpacity)
+          radius: 4
+          Layout.preferredHeight: parent.height
+          Layout.preferredWidth: clockWidget.implicitWidth + Theme.spacingMedium * 2
           
-          onToggleDropdown: {
-            calendarDropdown.visible = !calendarDropdown.visible
-          }
-          
-          onShowDropdown: {
-            calendarDropdown.visible = true
-          }
-          
-          onHideDropdown: {
-            calendarDropdown.visible = false
-          }
-          
-          CalendarDropdown {
-            id: calendarDropdown
-            anchor.window: panel
+          ClockWidget {
+            id: clockWidget
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.leftMargin: Theme.spacingMedium
+            anchors.rightMargin: Theme.spacingMedium
+            dropdownWindow: calendarDropdown
+            triggerMode: "hover"  // "click" or "hover"
+            hoverDelay: 200  // Delay in ms before showing on hover
             
-            // Button-relative positioning
-            buttonItem: clockWidget
-            alignment: "center"  // "left", "center", or "right"
-            alignmentOffset: 0  // Additional offset in pixels
+            onToggleDropdown: {
+              calendarDropdown.visible = !calendarDropdown.visible
+            }
             
-            // Dimensions
-            dropdownWidth: 400
-            dropdownHeight: 600
+            onShowDropdown: {
+              calendarDropdown.visible = true
+            }
+            
+            onHideDropdown: {
+              calendarDropdown.visible = false
+            }
+            
+            CalendarDropdown {
+              id: calendarDropdown
+              anchor.window: panel
+              
+              // Button-relative positioning
+              buttonItem: clockWidget
+              alignment: "center"  // "left", "center", or "right"
+              alignmentOffset: 0  // Additional offset in pixels
+              
+              // Dimensions
+              dropdownWidth: 400
+              dropdownHeight: 600
+            }
           }
         }
 
         Separator {}
         
         // Stats Group (CPU, Temp, Memory)
-        StatsGroup {
-          id: statsGroup
-          dropdownWindow: statsDropdown
-          triggerMode: "hover"  // "click" or "hover"
-          hoverDelay: 200  // Delay in ms before showing on hover
+        Rectangle {
+          color: Qt.rgba(Theme.widgetStatsBackground.r, Theme.widgetStatsBackground.g, Theme.widgetStatsBackground.b, Theme.widgetBackgroundOpacity)
+          radius: 4
+          Layout.preferredHeight: parent.height
+          Layout.preferredWidth: statsGroup.implicitWidth + Theme.spacingMedium * 2
           
-          onToggleDropdown: {
-            statsDropdown.visible = !statsDropdown.visible
-          }
-          
-          onShowDropdown: {
-            statsDropdown.visible = true
-          }
-          
-          onHideDropdown: {
-            statsDropdown.visible = false
-          }
-          
-          // Stats dropdown window (child of StatsGroup)
-          StatsDropdown {
-            id: statsDropdown
-            anchor.window: panel
+          StatsGroup {
+            id: statsGroup
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.leftMargin: Theme.spacingMedium
+            anchors.rightMargin: Theme.spacingMedium
+            dropdownWindow: statsDropdown
+            triggerMode: "hover"  // "click" or "hover"
+            hoverDelay: 200  // Delay in ms before showing on hover
             
-            // Button-relative positioning (new method)
-            buttonItem: statsGroup
-            alignment: "right"  // "left", "center", or "right"
-            alignmentOffset: 0  // Additional offset in pixels
+            onToggleDropdown: {
+              statsDropdown.visible = !statsDropdown.visible
+            }
             
-            // Dimensions
-            dropdownWidth: 280
-            dropdownHeight: 300
+            onShowDropdown: {
+              statsDropdown.visible = true
+            }
             
-            // Manual positioning (legacy, comment out when using buttonItem)
-            // offsetX: panel.width - 30
-            // offsetY: panel.height - Theme.borderWidth
+            onHideDropdown: {
+              statsDropdown.visible = false
+            }
+            
+            // Stats dropdown window (child of StatsGroup)
+            StatsDropdown {
+              id: statsDropdown
+              anchor.window: panel
+              
+              // Button-relative positioning (new method)
+              buttonItem: statsGroup
+              alignment: "right"  // "left", "center", or "right"
+              alignmentOffset: 0  // Additional offset in pixels
+              
+              // Dimensions
+              dropdownWidth: 280
+              dropdownHeight: 300
+              
+              // Manual positioning (legacy, comment out when using buttonItem)
+              // offsetX: panel.width - 30
+              // offsetY: panel.height - Theme.borderWidth
+            }
           }
         }
         

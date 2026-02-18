@@ -38,6 +38,8 @@ RowLayout {
       property int currentWorkspaceId: index + 1
       property int baseRotation: 20  // Base rotation for active workspace
       property int rotationStep: 8   // Degrees per workspace step
+      property int windowCount: ws ? ws.toplevels.count : 0
+      property bool shouldFlash: false
       
       width: 24
       height: 24
@@ -45,13 +47,57 @@ RowLayout {
       //   var diff = currentWorkspaceId - activeWorkspaceId
       //   return baseRotation + (diff * rotationStep)
       // }
-      color: "transparent"
+      color: shouldFlash ? Root.Theme.cyan : "transparent"
       border.color: isActive ? Root.Theme.cyan : (ws ? Root.Theme.blue : Root.Theme.muted)
       border.width: 1
       radius: isActive ? 45 : 0
       scale: 1.0
       Layout.alignment: Qt.AlignVCenter
       Layout.bottomMargin: 8
+      
+      // Monitor window count changes in non-active workspaces
+      onWindowCountChanged: {
+        if (!isActive && ws && windowCount > 0) {
+          shouldFlash = true
+          flashAnimation.start()
+        }
+      }
+      
+      // Monitor workspace for any changes (window titles, focus, etc.)
+      Connections {
+        target: ws
+        enabled: ws !== null
+        
+        function onTopleveChanged() {
+          if (!isActive && ws) {
+            shouldFlash = true
+            flashAnimation.start()
+          }
+        }
+      }
+      
+      // Monitor all windows in this workspace for title changes
+      Repeater {
+        model: ws ? ws.toplevels : null
+        
+        Connections {
+          target: modelData
+          
+          function onTitleChanged() {
+            if (!isActive) {
+              shouldFlash = true
+              flashAnimation.start()
+            }
+          }
+          
+          function onFullscreenChanged() {
+            if (!isActive) {
+              shouldFlash = true
+              flashAnimation.start()
+            }
+          }
+        }
+      }
       
       // Bounce animation when workspace becomes active
       SequentialAnimation on scale {
@@ -66,6 +112,32 @@ RowLayout {
           to: 1.0
           duration: 300
           easing.type: Easing.OutBounce
+        }
+      }
+      
+      // Flash animation for activity in non-active workspace
+      SequentialAnimation {
+        id: flashAnimation
+        running: false
+        loops: 3
+        SequentialAnimation {
+          NumberAnimation {
+            target: parent
+            property: "opacity"
+            to: 0.3
+            duration: 150
+            easing.type: Easing.InOutQuad
+          }
+          NumberAnimation {
+            target: parent
+            property: "opacity"
+            to: 1.0
+            duration: 150
+            easing.type: Easing.InOutQuad
+          }
+        }
+        onFinished: {
+          shouldFlash = false
         }
       }
       
@@ -94,6 +166,14 @@ RowLayout {
       
       // Animation for border color
       Behavior on border.color {
+        ColorAnimation {
+          duration: 200
+          easing.type: Easing.OutCubic
+        }
+      }
+      
+      // Animation for background color
+      Behavior on color {
         ColorAnimation {
           duration: 200
           easing.type: Easing.OutCubic
