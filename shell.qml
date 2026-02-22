@@ -79,12 +79,12 @@ ShellRoot {
 
         Item { Layout.fillWidth: true}
 
-        Separator {}
+        // Separator {}
         
         // Mode selector (Work/Game)
         Rectangle {
           color: Qt.rgba(Theme.widgetModeBackground.r, Theme.widgetModeBackground.g, Theme.widgetModeBackground.b, Theme.widgetBackgroundOpacity)
-          radius: 4
+          // radius: 4
           Layout.preferredHeight: parent.height
           Layout.preferredWidth: modeButton.implicitWidth + Theme.spacingMedium * 2
           
@@ -130,12 +130,12 @@ ShellRoot {
           }
         }
 
-        Separator {}
+        // Separator {}
 
         // Spotify Player
         Rectangle {
           color: Qt.rgba(Theme.widgetSpotifyBackground.r, Theme.widgetSpotifyBackground.g, Theme.widgetSpotifyBackground.b, Theme.widgetBackgroundOpacity)
-          radius: 4
+          // radius: 4
           Layout.preferredHeight: parent.height
           Layout.preferredWidth: spotifyButton.implicitWidth + Theme.spacingMedium * 2
           
@@ -181,12 +181,12 @@ ShellRoot {
           }
         }
 
-        Separator {}
+        // Separator {}
 
         // Network
         Rectangle {
           color: Qt.rgba(Theme.widgetNetworkBackground.r, Theme.widgetNetworkBackground.g, Theme.widgetNetworkBackground.b, Theme.widgetBackgroundOpacity)
-          radius: 4
+          // radius: 4
           Layout.preferredHeight: parent.height
           Layout.preferredWidth: networkWidget.implicitWidth + Theme.spacingMedium * 2
           
@@ -199,12 +199,12 @@ ShellRoot {
           }
         }
 
-        Separator {}
+        // Separator {}
 
         // Volume
         Rectangle {
           color: Qt.rgba(Theme.widgetVolumeBackground.r, Theme.widgetVolumeBackground.g, Theme.widgetVolumeBackground.b, Theme.widgetBackgroundOpacity)
-          radius: 4
+          // radius: 4
           Layout.preferredHeight: parent.height
           Layout.preferredWidth: volumeWidget.implicitWidth + Theme.spacingMedium * 2
           
@@ -217,12 +217,12 @@ ShellRoot {
           }
         }
 
-        Separator {}
+        // Separator {}
       
         // Battery
         Rectangle {
           color: Qt.rgba(Theme.widgetBatteryBackground.r, Theme.widgetBatteryBackground.g, Theme.widgetBatteryBackground.b, Theme.widgetBackgroundOpacity)
-          radius: 4
+          // radius: 4
           Layout.preferredHeight: parent.height
           Layout.preferredWidth: batteryWidget.implicitWidth + Theme.spacingMedium * 2
           
@@ -235,12 +235,12 @@ ShellRoot {
           }
         }
 
-        Separator {}
+        // Separator {}
       
          // Clock with calendar dropdown
         Rectangle {
           color: Qt.rgba(Theme.widgetClockBackground.r, Theme.widgetClockBackground.g, Theme.widgetClockBackground.b, Theme.widgetBackgroundOpacity)
-          radius: 4
+          // radius: 4
           Layout.preferredHeight: parent.height
           Layout.preferredWidth: clockWidget.implicitWidth + Theme.spacingMedium * 2
           
@@ -282,12 +282,12 @@ ShellRoot {
           }
         }
 
-        Separator {}
+        // Separator {}
         
         // Stats Group (CPU, Temp, Memory)
         Rectangle {
           color: Qt.rgba(Theme.widgetStatsBackground.r, Theme.widgetStatsBackground.g, Theme.widgetStatsBackground.b, Theme.widgetBackgroundOpacity)
-          radius: 4
+          // radius: 4
           Layout.preferredHeight: parent.height
           Layout.preferredWidth: statsGroup.implicitWidth + Theme.spacingMedium * 2
           

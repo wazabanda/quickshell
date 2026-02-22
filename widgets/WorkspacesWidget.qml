@@ -8,24 +8,63 @@ RowLayout {
   // Layout.bottomMargin: 20
   // Layout.topMargin: 0
 
-  // Access the focused monitor and workspace
-  property var focusedMonitor: Hyprland.focusedMonitor
-  property var activeWorkspace: Hyprland.focusedWorkspace
+  // Get focused workspace
+  property var focusedWorkspace: Hyprland.focusedWorkspace
   
-  // Find the activated window within that workspace
-  property var focusedWindow: {
-    // Try getting from focused monitor first
-    if (focusedMonitor && focusedMonitor.activeWindow) {
-      return focusedMonitor.activeWindow;
+  // Find focused window from toplevels in the focused workspace
+  property var focusedWindow: null
+  
+  // Function to update focused window from toplevels
+  function updateFocusedWindow() {
+    var newFocusedWindow = null;
+    
+    if (focusedWorkspace && focusedWorkspace.toplevels) {
+      // Iterate through toplevels to find the activated one
+      for (var i = 0; i < focusedWorkspace.toplevels.count; i++) {
+        var tl = focusedWorkspace.toplevels.get(i);
+        if (tl && tl.activated) {
+          newFocusedWindow = tl;
+          break;
+        }
+      }
     }
     
-    // Fallback: iterate through workspace toplevels
-    if (!activeWorkspace) return null;
-    for (var i = 0; i < activeWorkspace.toplevels.count; i++) {
-      var tl = activeWorkspace.toplevels.get(i);
-      if (tl.activated) return tl;
+    focusedWindow = newFocusedWindow;
+  }
+  
+  // Update when focused workspace changes
+  onFocusedWorkspaceChanged: updateFocusedWindow()
+  Component.onCompleted: updateFocusedWindow()
+  
+  // Monitor toplevels changes in focused workspace
+  Connections {
+    target: focusedWorkspace
+    enabled: focusedWorkspace !== null
+    
+    function onToplevelsChanged() {
+      updateFocusedWindow();
     }
-    return null;
+  }
+  
+  // Monitor individual toplevel activation and title changes
+  Repeater {
+    model: focusedWorkspace ? focusedWorkspace.toplevels : null
+    
+    Connections {
+      target: modelData
+      enabled: modelData !== null
+      
+      function onActivatedChanged() {
+        updateFocusedWindow();
+      }
+      
+      function onTitleChanged() {
+        // Update when title changes for activated window
+        if (modelData && modelData.activated) {
+          updateFocusedWindow();
+        }
+      }
+    }
   }
 
   // Workspace indicators
